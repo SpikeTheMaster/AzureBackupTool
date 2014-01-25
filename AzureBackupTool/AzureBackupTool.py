@@ -1,7 +1,6 @@
 from azure.storage import BlobService
-import platform
+import platform, subprocess, os
 from datetime import datetime
-import subprocess
 
 regVPS = 'backupsregvps'
 DOVPS = 'backupsredsearch'
@@ -35,3 +34,4 @@ blob_service.create_container(DOVPS)
 
 blob_service.put_block_blob_from_path(activeContainer, fileName, pathToZip)
 
+os.remove(fileName)
